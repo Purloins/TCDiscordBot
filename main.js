@@ -16,7 +16,7 @@ fs.readdirSync('./src/Commands').filter(file => file.endsWith('.js')).forEach(fi
 	/**
 	* @type {Command}
 	*/
-	const command = require(`./Commands/${file}`);
+	const command = require(`./src/Commands/${file}`);
 	client.commands.set(command.name, command);
 });
 

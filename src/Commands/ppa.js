@@ -16,7 +16,7 @@ module.exports = new Command({
 	
 	async run (message, args) {
 		try {
-            const msg = await message.channel.send(`Fetching data...`);
+            const msg = await message.channel.send(`Fetching data... (**This may take a couple of seconds!**)`);
 			// Fetch data from Zedd Bot Integration Sheet
 			const doc = new GoogleSpreadsheet('1ShptIEDkhp3Vjc8RwxUVEqaW3_LvBofzrFxbw-o_qfg');
 			// Log in with GoogleAuth
@@ -44,6 +44,7 @@ module.exports = new Command({
 					const nomination = sheet.getCellByA1('C5').value;
 					// Push it to the checklist array
 					workerlist.push([list[i], voted, nomination]);
+					
 				}
                 const embed = new Discord.MessageEmbed();
                 embed.setTitle(`Members Nomination for Worker of the Week`)

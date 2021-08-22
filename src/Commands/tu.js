@@ -20,6 +20,7 @@ module.exports = new Command({
 			if (!allow('Presidential Board') && !allow('Family Successors') && !allow('Transfer Unit Director') && !allow('Transfer Unit')) {
 				return message.reply('🚨 `You are not a member of Transfer Unit!`');
 			}
+			const msg = await message.channel.send(`Fetching data... (**This may take a couple of seconds!**)`);
 			// Link to Linda's personal TU sheet
 			const doc = new GoogleSpreadsheet('1TdexMpPlcPT9rYGsqE3lK6Ejdyun0IKPf7vxlf08pOc');
 			// Connect to GoogleAuth
@@ -71,6 +72,7 @@ module.exports = new Command({
 				await dc_sheet.loadCells('A1:J16');
 				const embed = new Discord.MessageEmbed();
 				embed.addField(habbo_username, `**Reason:** ${dc_sheet.getCellByA1('C8')}`)
+				msg.delete();
 				message.reply({ embeds: [embed] })
 			}
 		} catch (err) {

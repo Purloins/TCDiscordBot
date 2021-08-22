@@ -20,6 +20,7 @@ module.exports = new Command({
 			if (!allow('Presidential Board') && !allow('Family Successors') && !allow('Internal Affairs Director') && !allow('Internal Affairs')) {
 				return message.reply('🚨 `You are not a member of Internal Affairs!`');
 			}
+			const msg = await message.channel.send(`Fetching data... (**This may take a couple of seconds!**)`);
 			const doc = new GoogleSpreadsheet('1ShptIEDkhp3Vjc8RwxUVEqaW3_LvBofzrFxbw-o_qfg'); // Setting the Sheet to take data from
 			// Setting the arguments
 			const type = args[1];
@@ -68,6 +69,7 @@ module.exports = new Command({
 				)
 				.setThumbnail(`https://www.habbo.com/habbo-imaging/avatarimage?hb=image&user=${habbo_username}`)
                 .setFooter(`Data requested by ${message.author.username}`, message.author.avatarURL())
+				msg.delete();
 				message.channel.send({ embeds: [embed] });
 			}
 		} catch (err) {

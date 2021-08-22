@@ -1,7 +1,7 @@
 const Discord = require('discord.js'); // Calling Discord.js
 // Structures and commands
-const Command = require('./src/Structures/Command.js');
-const config = require('./src/Data/config.json');
+const Command = require('./Structures/Command.js');
+const config = require('./Data/config.json');
 // Setting Discord intents and clients
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
@@ -16,7 +16,7 @@ fs.readdirSync('./src/Commands').filter(file => file.endsWith('.js')).forEach(fi
 	/**
 	* @type {Command}
 	*/
-	const command = require(`./src/Commands/${file}`);
+	const command = require(`./Commands/${file}`);
 	client.commands.set(command.name, command);
 });
 

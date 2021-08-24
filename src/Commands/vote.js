@@ -6,10 +6,6 @@ const Discord = require("discord.js");
 
 const creds = require("../Structures/credentials.json");
 
-list_of_wotw_nominees = [];
-list_of_votw_nominees = [];
-list_of_cof_nominees = [];
-
 module.exports = new Command({
 	name: 'vote',
 	usage: 'vote wotw | votw | cof',
@@ -30,6 +26,7 @@ module.exports = new Command({
 		const type = args[1];
 		// Command
 		try {
+			list_of_wotw_nominees = [];
             // If first argument is WOTW,
 			if (type.toLowerCase() == 'wotw') {
 				const sheet = doc.sheetsByIndex[10]; // Takes in the wotw_count sheet
@@ -51,6 +48,7 @@ module.exports = new Command({
                 message.channel.send({ embeds: [embed] });
 			}
             // If first argument is VOTW,
+			list_of_votw_nominees = [];
 			if (type.toLowerCase() == 'votw') {
 				const sheet = doc.sheetsByIndex[11]; // Takes in the wotw_count sheet
 				const rows = await sheet.getRows(); // Takes in the rows
@@ -71,6 +69,7 @@ module.exports = new Command({
                 message.channel.send({ embeds: [embed] });
 			}
             // If first argument is COF,
+			list_of_cof_nominees = [];
 			if (type.toLowerCase() == 'cof') {
 				const sheet = doc.sheetsById['83376018']; // Takes in the cof_count sheet
 				const rows = await sheet.getRows(); // Takes in the rows

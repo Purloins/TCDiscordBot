@@ -12,6 +12,15 @@ module.exports = new Command({
 	description: 'Check the number of votes for each member in the voting phase.',
 	
 	async run(message, args) {
+		// Shortcut function of setting permissions
+		function allow(rolename) {
+			const allowed_roles = message.member.roles.cache.some(role => role.name === rolename);
+			return allowed_roles
+		}
+		// If member is not part of Internal Affairs, return error
+		if (!allow('Presidential Board') && !allow('Family Successors') && !allow('Panem Personal Affairs Director') && !allow('Panem Personal Affairs')) {
+			return message.reply('🚨 `You are not a member of Panem Personal Affairs!`');
+		}
         const msg = await message.channel.send(`Fetching data... (**This may take a couple of seconds!**)`);
 		// Load the cof_count sheet from the CRC mainsheet
 		const doc = new GoogleSpreadsheet('180pretMq6fJrTIQQX3J5KP1bRxhJogGjtTjjfwTwa9A');

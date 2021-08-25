@@ -17,7 +17,7 @@ module.exports = new Command({
                     {name: '🌼 `General Commands`', value: '`➝ about`\n`➝ clear`\n`➝ help`\n`➝ ping`\n`➝ role [@username] [role]`', inline: true},
                     {name: '🌙 `Internal Affairs`', value: '`➝ ia lookup [username]`', inline: true},
                     {name: '☀️ `Transfer Unit`', value: '`➝ tu manual [cur. div] [no. of div]`\n`➝ tu discharged [username]`', inline: true},
-                    {name: '🌷 `Panem Personal Affairs`', value: '`➝ ppa wotw | votw`\n`➝ vote wotw | votw`', inline: true},
+                    {name: '🌷 `Panem Personal Affairs`', value: '`➝ ppa wotw | votw`\n`➝ vote wotw | votw | cof`', inline: true},
                 )
                 .setThumbnail('https://c.tenor.com/4ThBfmyec2cAAAAd/vanitas-vanitas-no-carte.gif')
                 .setFooter("Do %help (command) to find out more information about a command!")

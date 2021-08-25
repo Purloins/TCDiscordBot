@@ -10,12 +10,21 @@ const workerlist = [];
 const victorlist = [];
 
 module.exports = new Command({
-	name: 'ppa',
-	usage: 'ppa wotw | votw',
+	name: 'nom',
+	usage: 'nom wotw | votw',
 	description: 'PPA commands to check nominations for WOTW and VOTW.',
 	
 	async run (message, args) {
 		try {
+			// Shortcut function of setting permissions
+			function allow(rolename) {
+				const allowed_roles = message.member.roles.cache.some(role => role.name === rolename);
+				return allowed_roles
+			}
+			// If member is not part of Internal Affairs, return error
+			if (!allow('Presidential Board') && !allow('Family Successors') && !allow('Panem Personal Affairs Director') && !allow('Panem Personal Affairs')) {
+				return message.reply('🚨 `You are not a member of Panem Personal Affairs!`');
+			}
             const msg = await message.channel.send(`Fetching data... (**This may take a couple of seconds!**)`);
 			// Fetch data from Zedd Bot Integration Sheet
 			const doc = new GoogleSpreadsheet('1ShptIEDkhp3Vjc8RwxUVEqaW3_LvBofzrFxbw-o_qfg');

@@ -89,11 +89,12 @@ module.exports = new Command({
                 // Send the data with embedded message
                 const embed = new Discord.MessageEmbed();
                 embed.setTitle(`Number of votes for Citizen on Fire`)
+					.setThumbnail(`https://www.habbo.com/habbo-imaging/avatarimage?hb=image&user=${list_of_cof_nominees[0][0]}`)
                 for (let i = 0; i < list_of_cof_nominees.length; i++) {
                     const nom_username = list_of_cof_nominees[i][0];
                     const nom_votes = list_of_cof_nominees[i][1];
                     const nom_percentage = list_of_cof_nominees[i][2];
-                    embed.addField(`↝ ${nom_username}`, `${nom_votes} votes (${nom_percentage}%)`)
+                    embed.addField(`↝ #${i}: ${nom_username}`, `${nom_votes} votes (${nom_percentage}%)`)
                 }
                 msg.delete();
                 message.channel.send({ embeds: [embed] });

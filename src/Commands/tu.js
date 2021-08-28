@@ -65,7 +65,7 @@ module.exports = new Command({
 				const dc_sheet = doc.sheetsByIndex[3];
 				// Loads the cells needed
 				await dc_sheet.loadCells('A1:J16');
-				sheet.getCellByA1('C6').value = habbo_username;
+				dc_sheet.getCellByA1('C6').value = habbo_username;
 				// Update the spreadsheet
 				await dc_sheet.saveUpdatedCells();
 				// Shows the data in an embedded message

@@ -14,9 +14,8 @@ module.exports = new Command({
                 const embed = new Discord.MessageEmbed();
                 embed.setTitle("List of commands available for Zedd")
                 .addFields(
-                    {name: '🌼 `General Commands`', value: '`➝ about`\n`➝ clear`\n`➝ help`\n`➝ ping`\n`➝ role [@username] [role]`', inline: true},
+                    {name: '🌼 `General Commands`', value: '`➝ about [username] (-points)`\n`➝ clear`\n`➝ help`\n`➝ ping`', inline: true},
                     {name: '🌙 `Internal Affairs`', value: '`➝ ia lookup [username]`', inline: true},
-                    {name: '☀️ `Transfer Unit`', value: '`➝ tu manual [cur. div] [no. of div]`\n`➝ tu discharged [username]`', inline: true},
                     {name: '🌷 `Panem Personal Affairs`', value: '`➝ ppa wotw | votw`\n`➝ vote wotw | votw | cof`', inline: true},
                 )
                 .setThumbnail('https://c.tenor.com/4ThBfmyec2cAAAAd/vanitas-vanitas-no-carte.gif')

@@ -47,6 +47,7 @@ module.exports = new Command({
 				const current = lookup.getCellByA1('C5');
 				const claimed = lookup.getCellByA1('C6');
 				const eligible = lookup.getCellByA1('C7');
+				const vouchers = lookup.getCellByA1('C8');
 				// Display this data in an embeded message
 				const embed = new Discord.MessageEmbed();
 				embed.setTitle(`Points Information for ${habbo_username}`)
@@ -55,10 +56,11 @@ module.exports = new Command({
 					{name: 'Current Pay Points', value: `${current.value}`, inline: true},
 					{name: 'Weekly Cap', value: `${claimed.value}`, inline: true},
 					{name: 'Month Bonus', value: `${eligible.value}`, inline: true},
+					{name: 'Total Vouches Logged', value: `${vouchers.value}`}
 				)
 				.setThumbnail(`https://www.habbo.com/habbo-imaging/avatarimage?hb=image&user=${habbo_username}`)
                 .setFooter(`Data requested by ${message.author.username}`, message.author.avatarURL())
-				message.channel.send({ embeds: [embed] });
+				message.reply({ embeds: [embed] });
 			} else {
 				// Else,
 				const req_friends = await fetch(`https://www.habbo.com/api/public/users/${req_profile.uniqueId}/friends`).then(res => res.json());

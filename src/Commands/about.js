@@ -107,6 +107,24 @@ module.exports = new Command({
 				const msg1 = await message.reply(`Fetching data... (**This may take a couple of seconds!**)`);
 				const req_friends = await fetch(`https://www.habbo.com/api/public/users/${req_profile.uniqueId}/friends`).then(res => res.json());
 				var friend_count = Object.keys(req_friends).length;
+				if (req_profile.selectedBadges[0] == null) {
+					var last_login = req_profile.lastAccessTime.slice(0, 10);
+					// Create embed with the captured data
+					const embed = new Discord.MessageEmbed();
+					embed.setTitle(`User Details for ${habbo_username}`)
+					.setDescription('・──・──・୨୧・──・──・⁣⁣──')
+					.setThumbnail(`https://www.habbo.com/habbo-imaging/avatarimage?hb=image&user=${habbo_username}`)
+					.addFields(
+						{name: 'Level', value: `${req_profile.currentLevel}, ${req_profile.totalExperience} EXP, (${req_profile.currentLevelCompletePercent}%)\n**${req_profile.starGemCount}**⭐`},
+						{name: 'Motto', value: `${req_profile.motto}`},
+						{name: 'Last Online Time', value: `${last_login}`},
+						{name: 'Number of Friends', value: `${friend_count}`},
+				)
+				.setFooter(`Data requested by ${message.author.username}`, message.author.avatarURL())
+				// Send the embeded message to the channel
+				msg1.delete();
+				message.reply({ embeds: [embed] });
+				} else {
 				var badge1 = req_profile.selectedBadges[0].code;
 				var last_login = req_profile.lastAccessTime.slice(0, 10);
 				// Create embed with the captured data
@@ -126,6 +144,7 @@ module.exports = new Command({
 				// Send the embeded message to the channel
 				msg1.delete();
 				message.reply({ embeds: [embed] });
+			}
 			}
 		} catch(err) {
 			console.log(err);

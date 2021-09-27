@@ -64,6 +64,7 @@ module.exports = new Command({
 				msg.delete();
 				message.reply({ embeds: [embed] });
 			} else if (option == '-elective') {
+				const msg = await message.reply(`Fetching data... (**This may take a couple of seconds!**)`);
 				const doc = new GoogleSpreadsheet('1ShptIEDkhp3Vjc8RwxUVEqaW3_LvBofzrFxbw-o_qfg'); // Setting the Sheet to take data from
 				// Connecting to the sheet using Google Auth
 				await doc.useServiceAccountAuth({

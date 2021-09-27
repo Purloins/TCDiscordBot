@@ -50,6 +50,7 @@ module.exports = new Command({
 				const claimed = lookup.getCellByA1('C6');
 				const eligible = lookup.getCellByA1('C7');
 				const vouchers = lookup.getCellByA1('C8');
+				const weekly = lookup.getCellByA1('C9');
 				// Elective points
 				const base = lookup.getCellByA1('D5');
 				const act = lookup.getCellByA1('D6');
@@ -61,7 +62,7 @@ module.exports = new Command({
 				embed.setTitle(`Points Information for ${habbo_username}`)
 				.setDescription('・──・──・୨୧・──・── Member')
 				.addFields(
-					{name: 'Pay Points Collected', value: `${collected.value}`},
+					{name: 'Pay Points Collected', value: `${collected.value} (${weekly.value} **this week**)`},
 					{name: 'Current Pay Points', value: `${current.value}`, inline: true},
 					{name: 'Weekly Cap', value: `${claimed.value}`, inline: true},
 					{name: 'Month Bonus', value: `${eligible.value}`, inline: true},

@@ -16,7 +16,6 @@ module.exports = new Command({
 		const habbo_username = args[1]; // Set the first argument to the Habbo username
 		const option = args[2]; // Sets the second argument to the Points
 		try {
-			const msg = await message.reply(`Fetching data... (**This may take a couple of seconds!**)`);
 			// Fetch data API from Habbo API
 			const req_profile = await fetch(`https://www.habbo.com/api/public/users?name=${encodeURIComponent(habbo_username)}`).then(res => res.json());
 			// If user profile does not exist, print error
@@ -25,6 +24,7 @@ module.exports = new Command({
 			}
 			// If they just want to find out their points,
 			if (option == '-points') {
+				const msg = await message.reply(`Fetching data... (**This may take a couple of seconds!**)`);
 				const doc = new GoogleSpreadsheet('1ShptIEDkhp3Vjc8RwxUVEqaW3_LvBofzrFxbw-o_qfg'); // Setting the Sheet to take data from
 				// Connecting to the sheet using Google Auth
 				await doc.useServiceAccountAuth({

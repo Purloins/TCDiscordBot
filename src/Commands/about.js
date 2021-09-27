@@ -54,7 +54,7 @@ module.exports = new Command({
 				const embed = new Discord.MessageEmbed();
 				embed.setTitle(`Points Information for ${habbo_username}`)
 				.addFields(
-					{name: 'Pay Points Collected', value: `${collected.value} (**${weekly.value}** points this week) (**${reduction.value}** points deducted this week)`},
+					{name: 'Pay Points Collected', value: `${collected.value} (**${weekly.value}** points this week) (**${reduction.value}** points deducted this month)`},
 					{name: 'Total Vouches Logged', value: `${vouchers.value} (${eligible.value})`, inline: true},
 					{name: 'Weekly Cap', value: `${claimed.value}`, inline: true},
 					{name: 'Current Pay Points', value: `${current.value}`},

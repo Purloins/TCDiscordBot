@@ -1,4 +1,5 @@
 const { GoogleSpreadsheet } = require("google-spreadsheet");
+const pagination = require('discord.js-pagination');
 const Discord = require('discord.js'); // Calling Discord.js
 // Structures and commands
 const Command = require('../Structures/Command.js');

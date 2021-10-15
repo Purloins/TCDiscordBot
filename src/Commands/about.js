@@ -30,7 +30,8 @@ module.exports = new Command({
 			const waitmsg = await message.reply("🍔 | **This might take awhile**, have a burger while you wait!");
 			const profile = await fetch(`https://www.habbo.com/api/public/users?name=${encodeURIComponent(habbousername)}`).then(res => res.json());
 			// Username is invalid:
-			if (profile.error = "not-found" || !profile.lastAccessTime) {
+			if (profile.error == "not-found" || !profile.lastAccessTime) {
+				waitmsg.delete(); // Delete the "Taking some time" message
 				return message.reply("❎ | I couldn't find that user, did you mistype their name?");
 			}
 			/*
@@ -95,7 +96,7 @@ module.exports = new Command({
 			Page 3: Elective Points Information
 			ONLY works if they are an elective member. If not, it will show "Not Elective".
 			*/
-			await elective.loadCells('A1:F12');
+			await lookup.loadCells('A1:F12');
 			lookup.getCellByA1('D3').value = habbousername;
 			await lookup.saveUpdatedCells();
 			

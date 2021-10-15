@@ -14,8 +14,7 @@ module.exports = new Command({
                 const embed = new Discord.MessageEmbed();
                 embed.setTitle("List of commands available for Zedd")
                 .addFields(
-                    {name: '🌼 `General Commands`', value: '`➝ about [username]`\n`➝ clear`\n`➝ help`\n`➝ ping`'},
-                    {name: '🌙 `Internal Affairs`', value: '`➝ ia lookup [username]`', inline: true},
+                    {name: '🌼 `General Commands`', value: '`➝ about [username]`\n`➝ help`\n`➝ ping`'},
                 )
                 .setThumbnail('https://c.tenor.com/4ThBfmyec2cAAAAd/vanitas-vanitas-no-carte.gif')
                 .setFooter("Do %help (command) to find out more information about a command!")

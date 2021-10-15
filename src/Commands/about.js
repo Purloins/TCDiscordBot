@@ -21,7 +21,7 @@ const sheet = new GoogleSpreadsheet('1ShptIEDkhp3Vjc8RwxUVEqaW3_LvBofzrFxbw-o_qf
 // Actual code, wow no way!
 module.exports = new Command({
 	name: 'about',
-	name: 'about <Habbo username>',
+	usage: 'about <Habbo username>',
 	description: 'Displays the information of a TC member through the command.',
 	
 	async run(message, args) {

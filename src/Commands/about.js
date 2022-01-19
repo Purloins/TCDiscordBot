@@ -101,6 +101,7 @@ module.exports = new Command({
 			await lookup.saveUpdatedCells();
 			
 			// Get data based on the Habbo username
+			await lookup.loadCells('A1:F12');
 			const base = lookup.getCellByA1('D5');
 			const act = lookup.getCellByA1('D6');
 			const elec = lookup.getCellByA1('D7');
